@@ -1,0 +1,159 @@
+﻿@model FrontEndTeamManagement.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/CSS/RegistrationStyle.css" rel="stylesheet" />
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-md-3 register-left">
+        <a href='@Url.Action("Register", "UserAccount")'><img src="~/Content/images/register_logo7.png" /></a>
+        <h3>Welcome</h3>
+    </div>
+
+    <div class="col-md-9 register-right">
+        <h3 class="register-heading"><b>Apply as a Front-End Team Member</b></h3>
+        <br />
+        @using (Html.BeginForm("SaveRegistrationDetails", "UserAccount", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="row register-form" id="registerForm" style="padding-left: 150px;">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.EmployeeId, new { @placeholder = "Employee ID", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.EmployeeId)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Password, new { @placeholder = "Password", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.FirstName, new { @placeholder = "First Name", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FirstName)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "datepicker form-control", @type = "datetime" } })
+                        @Html.ValidationMessageFor(model => model.DateOfBirth)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.DropDownListFor(model => model.Gender, new SelectList(ViewBag.Gender, "Value", "Text"), "Select Gender", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Gender)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.CurrentAddress, new { @placeholder = "Current Address", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CurrentAddress)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.PermanentAddress, new { @placeholder = "Permanent Address", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PermanentAddress)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.CompanyName, new { @placeholder = "Company Name", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CompanyName)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.WorkExperience, new { @placeholder = "Work Experience", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.WorkExperience)
+                    </div>
+                    <div class="form-group">
+                        @Html.DropDownListFor(model => model.SecurityQuestion, (IEnumerable<SelectListItem>)ViewBag.QuestionList as SelectList, "Please select your Security Question", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SecurityQuestion)
+                    </div>
+                    <input type="submit" class="btnRegister" value="Register"/>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.UserName, new { @placeholder = "Username", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserName)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.ConfirmPassword, new { @placeholder = "Confirm Password", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.LastName, new { @placeholder = "Last Name", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.LastName)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.EmailId, new { @placeholder = "Email ID", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.EmailId)
+                    </div>
+                    <div class="form-group">
+                        @Html.DropDownListFor(model => model.MaritalStatus, (IEnumerable<SelectListItem>)ViewBag.MaritalStatusList as SelectList, "Select Marital Status", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MaritalStatus)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.PinCode, new { @placeholder = "Pin Code", @class = "form-control", @maxlength=6 })
+                        @Html.ValidationMessageFor(model => model.PinCode)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.MobileNo, new { @placeholder = "Mobile Number", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MobileNo)
+                    </div>
+                    <div class="form-group">
+                        @Html.DropDownListFor(model => model.TeamRole, (IEnumerable<SelectListItem>)ViewBag.TeamRoleList as SelectList, "Select Team Role", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TeamRole)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.TechnologyKnown, new { @placeholder = "Technology Known & Worked On", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TechnologyKnown)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.SecurityAnswer, new { @placeholder = "Enter your Answer", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SecurityAnswer)
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script> 
+    <script src="~/Scripts/moment.js"></script>
+    <script>
+        $(function () {
+            $.validator.addMethod('date',
+                function (value, element) {
+                    if (this.optional(element)) {
+                        return true;
+                    }
+                    var valid = true;
+                    try {
+                        $.datepicker.parseDate('dd/mm/yy', value);
+                    }
+                    catch (err) {
+                        valid = false;
+                    }
+                    return valid;
+                });
+            $(".datepicker").datepicker({
+                dateFormat: 'dd/mm/yy',
+                showStatus: true,
+                showWeeks: true,
+                currentText: 'Now',
+                autoSize: true,
+                gotoCurrent: true,
+                showAnim: 'blind',
+                highlightWeek: true
+            });
+            $(".datepicker").attr("placeholder", "Date Of Birth");           
+        });
+    </script>
+
+}
+
+
+
+
+

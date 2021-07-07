@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Moment.js</id>
+    <version>2.24.0</version>
+    <title>Moment.js</title>
+    <authors>Tim Wood, Iskren Chernev, Moment.js contributors</authors>
+    <owners>Tim Wood, Iskren Chernev, Moment.js contributors</owners>
+    <licenseUrl>https://raw.github.com/timrwood/moment/master/LICENSE</licenseUrl>
+    <projectUrl>http://momentjs.com/</projectUrl>
+    <iconUrl>https://api.nuget.org/v3-flatcontainer/moment.js/2.24.0/icon</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A lightweight JavaScript date library for parsing, manipulating, and formatting dates.</description>
+    <summary />
+    <releaseNotes>* Release Jan 21, 2019
+
+            * [#4338](https://github.com/moment/moment/pull/4338) [bugfix] Fix startOf/endOf DST issues while boosting performance
+            * [#4553](https://github.com/moment/moment/pull/4553) [feature] Add localeSort param to Locale weekday methods
+            * [#4887](https://github.com/moment/moment/pull/4887) [bugfix] Make Duration#as work with quarters
+            * 3 new locales (it-ch, ga, en-SG)
+            * Lots of locale improvements</releaseNotes>
+    <tags>JavaScript date time browser node.js</tags>
+  </metadata>
+</package>

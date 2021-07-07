@@ -1,0 +1,75 @@
+﻿@model FrontEndTeamManagement.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4" style="align-self:center">
+        <div class="row">
+            <div class="col-lg-12" style="text-align:center">
+                <a href='@Url.Action("Login", "UserAccount")'><img alt='' src='~/Content/images/login_logo1.png' /></a>
+            </div>
+        </div>
+        <br />
+        <div id="loginForm">
+            @using (Html.BeginForm("Login", "UserAccount", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span class="glyphicon glyphicon-user">
+                            @Html.LabelFor(model => model.UserName, new { @class = "control-label" })
+                        </span>
+                    </div>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserName)
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span class="glyphicon glyphicon-lock">
+                            @Html.LabelFor(model => model.Password, new { @class = "control-label" })
+                        </span>
+                    </div>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-6">
+                        @Html.CheckBoxFor(model => model.RememberMe)
+                        @Html.LabelFor(model => model.RememberMe)
+                    </div>
+                    <div class="col-lg-6">
+                        <b> @Html.ActionLink("Forgot Password", "ForgotPassword", "UserAccount")</b>
+                    </div>
+                </div>
+                <div class=" row form-group">
+                    <div class="col-lg-12" style="text-align:center">
+                        <input type="submit" value="Log in" class="btn btn-default" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-12">
+                        <b> @Html.ActionLink("Register", "Register")</b> if you are not yet a member of Front-End Team.
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-lg-4"></div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
